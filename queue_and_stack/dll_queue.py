@@ -2,7 +2,7 @@ import sys
 sys.path.append('../doubly_linked_list')
 from doubly_linked_list import DoublyLinkedList
 
-# LIFO
+# FIFO
 class Queue:
     def __init__(self):
         self.size = 0
@@ -10,12 +10,14 @@ class Queue:
         self.storage = DoublyLinkedList()
 
     def enqueue(self, value):
+        self.size += 1
         self.storage.add_to_tail(value)
 
     def dequeue(self):
-        if self.len() == 0:
-            return "Please enqueue a node before trying dequeuing, the queue is empty"
-        self.storage.remove_from_head()
+        if self.size == 0:
+            return None
+        self.size -= 1
+        return self.storage.remove_from_head()
 
     def len(self):
-        return len(self.storage)
+        return self.size
