@@ -42,6 +42,20 @@ class ListNode:
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
 
+"""
+    operations           |   best case   |   worst case  
+    ---------------------+---------------+-------------
+    add_to_head(_:)      |       O(1)    |       O(1)
+    remove_from_head(_:) |       O(1)    |       O(1)
+    add_to_tail          |       O(1)    |       O(1)
+    remove_from_tail     |       O(n)    |       O(n)
+    move_to_front        |       O(1)    |       O(1)
+    move_to_end          |       O(1)    |       O(1)
+    delete               |       O(1)    |       O(1)
+    get_max              |       O(n)    |       O(n)
+    space complexity     |       O(n)    |       O(n)
+"""
+
 
 class DoublyLinkedList:
     def __init__(self, node=None):

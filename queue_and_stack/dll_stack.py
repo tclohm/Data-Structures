@@ -20,3 +20,15 @@ class Stack:
 
     def len(self):
         return self.size
+
+
+class DoubleStack:
+    def __init__(self):
+        self.leftStack = Stack()
+        self.rightStack = Stack()
+
+    def isEmpty(self):
+        return True if self.leftStack.len() == 0 and self.rightStack.len() == 0 else False
+
+    def peek(self):
+        return self.leftStack[-1] if self.leftStack.len() == 0 else self.rightStack[0]

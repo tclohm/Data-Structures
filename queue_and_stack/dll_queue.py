@@ -3,6 +3,14 @@ sys.path.append('../doubly_linked_list')
 from doubly_linked_list import DoublyLinkedList
 
 # FIFO
+
+"""
+    operations       |   best case   |   worst case  
+    -----------------+---------------+-------------
+    enqueue(_:)      |       O(1)    |       O(1)
+    dequeue(_:)      |       O(1)    |       O(1)
+    space complexity |       O(n)    |       O(n)
+"""
 class Queue:
     def __init__(self):
         self.size = 0
