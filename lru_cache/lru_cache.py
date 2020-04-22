@@ -15,11 +15,11 @@ class LRUCache:
     """
     def __init__(self, limit=10):
         self.limit = limit
-        self.storage = DoublyLinkedList()
+        self.ordering = DoublyLinkedList()
         self.cache = {}
 
     def __len__(self):
-        return len(self.storage)
+        return len(self.ordering)
 
     """
     Retrieves the `value` associated with the `given key`. Also
@@ -32,7 +32,7 @@ class LRUCache:
         value = None
         if key in self.cache:
             node = self.cache[key]
-            self.storage.move_to_front(node)
+            self.ordering.move_to_front(node)
             (_, value) = node.value
         return value
 
@@ -51,12 +51,11 @@ class LRUCache:
 
         if key in self.cache:
             node = self.cache[key]
-            self.storage.move_to_front(node)
+            self.ordering.move_to_front(node)
             node.value = (key, value)
-        else:
-            self.storage.add_to_head((key, value))
-            self.cache[key] = self.storage.head
-
-        if len(self) > self.limit:
-            (old_key, _) = self.storage.remove_from_tail()
+        if len(self) == self.limit:
+            (old_key, _) = self.ordering.remove_from_tail()
             del self.cache[old_key]
+       
+        self.ordering.add_to_head((key, value))
+        self.cache[key] = self.ordering.head
