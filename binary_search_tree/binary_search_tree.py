@@ -64,7 +64,7 @@ class BinarySearchTree:
         if self.right:
             self.right.for_each(cb)
 
-        # iterative solution
+        # iterative solution, with stack, depth-first approach, (LIFO)
         # stack = Stack()
         # stack.append(self)
         # while len(stack) > 0:
@@ -74,23 +74,38 @@ class BinarySearchTree:
         #     if curr.left:
         #         stack.push(curr.left)
         #     cb(curr.value)
+
+        # breadth-first approach, levels (FIFO)
+        # queue = Queue()
+        # queue.enqueue(self)
+        # while len(queue):
+        #     curr = queue.dequeue()
+        #     print(curr)
+
+        #     if curr.left:
+        #         queue.enqueue(curr.left)
+        #     if curr.right:
+        #         queue.enqueue(curr.right)
+        #     cb(curr.value)
+
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        print(self.value)
-
         if self.left:
             self.left.in_order_print(self)
+
+        print(self.value)
+        
         if self.right:
             self.right.in_order_print(self)
+        
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        queue = Queue()
-        queue.enqueue(self)
+        pass
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
