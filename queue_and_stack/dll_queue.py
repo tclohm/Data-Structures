@@ -2,18 +2,30 @@ import sys
 sys.path.append('../doubly_linked_list')
 from doubly_linked_list import DoublyLinkedList
 
+# FIFO
 
+"""
+    operations       |   best case   |   worst case  
+    -----------------+---------------+-------------
+    enqueue(_:)      |       O(1)    |       O(1)
+    dequeue(_:)      |       O(1)    |       O(1)
+    space complexity |       O(n)    |       O(n)
+"""
 class Queue:
     def __init__(self):
         self.size = 0
         # Why is our DLL a good choice to store our elements?
-        # self.storage = ?
+        self.storage = DoublyLinkedList()
 
     def enqueue(self, value):
-        pass
+        self.size += 1
+        self.storage.add_to_tail(value)
 
     def dequeue(self):
-        pass
+        if self.size == 0:
+            return None
+        self.size -= 1
+        return self.storage.remove_from_head()
 
     def len(self):
-        pass
+        return self.size
